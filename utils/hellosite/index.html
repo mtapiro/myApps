@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        .container {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .date {
+            font-size: 1.25rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .time {
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .wave {
+            display: inline-block;
+            animation: wave 1.5s infinite;
+            transform-origin: 70% 70%;
+        }
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-10deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><span class="wave">👋</span> Hello, I'm a demo site</h1>
+        <p class="date" id="date"></p>
+        <p class="time" id="time"></p>
+    </div>
+    <script>
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', dateOptions);
+            document.getElementById('time').textContent = now.toLocaleTimeString('en-US', timeOptions);
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>

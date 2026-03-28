@@ -1,0 +1,9 @@
+services:
+  demo-site:
+    build:
+      context: ../hellosite
+      dockerfile: ../docker_hellosite/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
